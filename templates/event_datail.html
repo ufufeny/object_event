@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{event.Name}}
+{% endblock %}
+
+{% block body %}
+<div class = 'container'>
+    <H1>{{event.Name}}</H1>
+    <div class = "alert alert-info">
+        <a>Объект проведения мероприятия:<h4>{{ event.Name_house }}</h4></a>
+        <a>Статус:<h4>{{ event.Type }}</h4></a>
+        <a>Дата проведения мероприятия:<h4>{{ event.Data }}</h4></a>
+        <a href="/events/{{ event.id }}/delete" class="btn btn-danger">Удалить</a>
+        <a href="/events/{{ event.id }}/update" class="btn btn-success">Редактировать</a>
+    </div>
+</div>
+{% endblock %}

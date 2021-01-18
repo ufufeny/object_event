@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Комментарии
+{% endblock %}
+
+{% block body %}
+<div class = 'container'>
+    <H1>Все комментарии</H1>
+
+    {% if rep|length > 0 %}
+        {% for i in rep %}
+            {% if rep.Name_house == house.Name %}
+                <div class = "alert alert-info">
+                     <h3>{{ i.Name_house }} - название объекта</h3>
+                    <p>Отзыв: </p>
+                     <p>"{{ i.Comment }}"</p>
+                     <h5>{{ i.When }} - дата посещения</h5>
+                     <a href="/house/{{i.id}}/rep/delete" class="btn btn-warning">Удалить</a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+    <p>На сайте еще нет владельцев</p>
+    {% endif %}
+</div>
+{% endblock %}

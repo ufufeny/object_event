@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Добавление объекта
+{% endblock %}
+
+{% block body %}
+<div class='container mt-5'>
+    <h1>Добавить объект</h1>
+    <form  name="yourForm" id="theForm" method="post"><br>
+    <input type="text" name="Name" id="Name" placeholder="Название объекта"/><br>
+    <input type="text" name="Type" id="Type" placeholder="Тип объекта"/><br>
+    <input type="text" name="Index" id="Index" placeholder="Адрес"/><br>
+    <input type="text" name="Slots" id="Slots" placeholder="Количество мест"/><br>
+    <input type="text" name="Status" id="Status" placeholder="Статус"/><br>
+    <input type="date" name="Data_open" id="Data_open" placeholder="Дата открытия"/><br>
+    <select name="Name_owner" id="Name_owner" >
+                {% for i in owner %}
+                        <option value="{{i.Nickname}}">{{i.Nickname}}</option>
+                {% endfor %}
+            </select>
+    <p><input type="submit" value="Отправить" class="btn btn-success"/></p>
+    </form>
+</div>
+{% endblock %}

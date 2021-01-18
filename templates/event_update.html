@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Редактирование мероприятия
+{% endblock %}
+
+{% block body %}
+<div class='container mt-5'>
+    <h1>Редактирование</h1>
+    <form  name="Form" id="Form" method="post"><br>
+    <input type="text" name="Name" id="Name" value="{{ event.Name }}" placeholder="Название мероприятия"/> -Название Мероприятия</input><br>
+    <input type="text" name="Type" id="Type" value="{{ event.Type }}" placeholder="Тип мероприятия"/> -Тип мероприятия</input><br>
+    <input type="text" name="Data" id="Data" value="{{ event.Data }}" placeholder="Дата проведения"/> -Дата проведния</input><br>
+    <input type="text" name="Name_house" id="Name_house" value="{{ event.Name_house }}"placeholder="Название обьекта"/> -Объект проведения</input><br>
+    <p><input type="submit" value="Обновить" class="btn btn-success"/></p>
+    </form>
+</div>
+{% endblock %}

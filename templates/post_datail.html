@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{owner.Name}}
+{% endblock %}
+
+{% block body %}
+<div class = 'container'>
+    <H1>{{owner.Nickname}}</H1>
+    <div class = "alert alert-info">
+        <h1>{{owner.Name}}</h1>
+        <h2>{{ owner.Type }} лицо</h2>
+        <p>Конт. телефон-{{ owner.Number }}</p>
+        <a href="/posts/{{ owner.id }}/update" class="btn btn-success">Редактировать</a>
+        {% for i in owners %}
+            {% if owners|length > 0 %}
+                {% if house.Name_owner == i.Nickname %}
+                    <a href="/posts/{{ owner.id }}/post" class="btn btn-success">Объекты</a>
+                {% else %}
+                {% endif %}
+            {% else %}
+            {% endif %}
+        {% endfor %}
+        <a href="/posts/{{ owner.id }}/add_house" class="btn btn-success">Добавить обьект</a>
+        <a href="/posts/{{ owner.id }}/delete" class="btn btn-danger">Удалить</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Оценить {{house.Name}}
+{% endblock %}
+
+{% block body %}
+<div class='container mt-5'>
+    <h1>Оценить {{house.Name}}</h1>
+    <form  name="yourForm" id="theForm" method="post"><br>
+    <p><input type="text" name="Name_house" id="Name_house" placeholder="Название объекта" value="{{ house.Name }}"/> - название объекта</input><br></p>
+    <p><textarea  name="comment" id="comment" class="form-control" placeholder="Оставте отзыв о объекте"></textarea></p>
+    <p><input type="date" name="When" id="When" placeholder="Дата посещения"/> - Дата посещения</input><br></p>
+        <div class="alert alert-info">
+            <a>Дайте свою оценку объекту: </a>
+            <select name="mark" id="mark" >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+    <p><input type="submit" value="Отправить" class="btn btn-success"/></p>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+<div class='container mt-5'>
+    <h1>Добовление владельца</h1>
+    <form  name="yourForm" id="theForm" method="post"><br>
+    <input type="text" name="Name" id="Name" placeholder="ФИО"/><br>
+    <input type="text" name="Nickname" id="Nickname" placeholder="Название"/><br>
+    <input type="text" name="Type" id="Type" placeholder="Вид лица"/><br>
+    <p><input type="text" name="Number" id="Number" placeholder="Номер"/><br></p>
+    <p><input type="submit" value="Отправить" class="btn btn-success"/></p>
+    </form>
+</div>
+{% endblock %}

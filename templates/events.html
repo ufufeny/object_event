@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Владельцы
+{% endblock %}
+
+{% block body %}
+<div class = 'container'>
+    <H1>Все Меропрития</H1>
+
+    {% if event|length > 0 %}
+        {% for i in event %}
+        <div class = "alert alert-info">
+             <h2>{{ i.Name }}</h2>
+             <p>Статус: {{ i.Type }}</p>
+             <a href="/events/{{ i.id }}" class="btn btn-warning">Детали</a>
+        </div>
+        {% endfor %}
+    {% else %}
+    <p>На сайте еще нет меропритий</p>
+    {% endif %}
+</div>
+{% endblock %}

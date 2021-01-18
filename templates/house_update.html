@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Редактирование объекта
+{% endblock %}
+
+{% block body %}
+<div class='container mt-5'>
+    <h1>Редактирование</h1>
+    <form  name="Form" id="Form" method="post"><br>
+    <input type="text" name="Name" id="Name" value="{{ house.Name }}" placeholder="Название"/> -Название</input><br>
+    <input type="text" name="Type" id="Type" value="{{ house.Type }}"placeholder="Тип объекта"/> -Тип объекта</input><br>
+    <input type="text" name="Index" id="Index" value="{{ house.Index }}" placeholder="Адрес"/> -Адрес</input><br>
+    <p><input type="text" name="Slots" id="Slots" value="{{ house.Slots }}" placeholder="Количество мест"/> -Количество мест</input><br></p>
+    <p><input type="text" name="Status" id="Status" value="{{ house.Status }}" placeholder="Статус объекта"/> -Статус объекта</input><br></p>
+    <p><input type="date" name="Data_open" id="Data_open" placeholder="{{ house.Data_open }}"/><br></p>
+    <p><input type="text" name="Name_owner" id="Name_owner" value="{{ house.Name }}" placeholder="Статус объекта"/> -Статус объекта</input><br></p>
+    <p><input type="submit" value="Обновить" class="btn btn-success"/></p>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Объекты
+{% endblock %}
+
+{% block body %}
+<div class = 'container'>
+    <H1>Все объекты</H1>
+     <p>Всего мероприятий: {{ events|length }}</p>
+
+    {% if house|length > 0 %}
+        {% for i in house %}
+        <div class = "alert alert-info">
+            <h2>{{ i.Name }}</h2>
+            <h4>Тип объекта - {{ i.Type }}</h4>
+            <p>Статус: {{ i.Status }}</p>
+            <a href="/house/{{ i.id }}" class="btn btn-warning">Детали</a>
+        </div>
+        {% endfor %}
+    {% else %}
+    <p>На сайте еще нет объектов</p>
+    {% endif %}
+</div>
+{% endblock %}

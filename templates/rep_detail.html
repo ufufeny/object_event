@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{house.Name}}
+{% endblock %}
+
+{% block body %}
+<div class = 'container'>
+    <H1>{{house.Name}}</H1>
+    <div class = "alert alert-info">
+         {% for i in rep %}
+            <a href="/rep/{{ i.id }}/delete" class="btn btn-warning">Удалитdь</a>
+         {% endfor %}
+    </div>
+</div>
+{% endblock %}

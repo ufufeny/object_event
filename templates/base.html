@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+    .bodys {
+    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/A_Website_Background.png/800px-A_Website_Background.png);
+    background-size: 100%;
+    }
+    </style>
+</head>
+<body class="bodys">
+    <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <p class="h5 my-0 me-md-auto fw-normal">|mEсTо<=>Д0сYг|</p>
+          <nav class="my-2 my-md-0 me-md-3">
+            <a class="btn btn-success" href="/house">Обьекты</a>
+            <a class="btn btn-success" href="/events">Мероприятия</a>
+            <a class="btn btn-warning" href="/posts">Владельцы</a>
+            <a class="btn btn-danger" href="/create-owner">Добавить владельца</a>
+
+          </nav>
+    </header>
+    <footer class="text-muted py-5">
+
+    {% block body %}{% endblock %}
+        <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Вернуть на верх</a>
+    </p>
+    <p class="mb-1">Album example is © Bootstrap, but please download and customize it for yourself!</p>
+    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.0/getting-started/introduction/">getting started guide</a>.</p>
+  </div>
+</footer>
+</body>
+</html>

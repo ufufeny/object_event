@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{house.Name}}
+{% endblock %}
+
+{% block body %}
+<div class = 'container'>
+    <H1>{{house.Name}}</H1>
+    <div class = "alert alert-info">
+        <a href="/house/{{ house.id }}/update" class="btn btn-success">Редактировать</a>
+        <a href="/house/{{ house.id }}/delete" class="btn btn-danger">Удалить</a>
+        <h2>Тип объекта - {{ house.Type }}</h2>
+        <p>Владелец: {{ house.Name_owner }}</p>
+        <p>Адрес: {{ house.Index }}</p>
+        <p>Количество мест: {{ house.Slots }}</p>
+        <p>Статус: {{ house.Status }}</p>
+        <p>Дата открытия: {{ house.Data_open }}</p>
+        <a class="btn btn-warning" href="/house/{{ house.id }}/add_event">Добавить мероприятие</a>
+        <a class="btn btn-warning" href="/posts">Владелец(-льцы)</a>
+    </div>
+</div>
+<div class="container">
+    {% if event|length > 0 %}
+        <div class = "alert alert-info">
+                    <h2>Мероприятия объекта: {{ events.Name }}</h2>
+                    <a class="btn btn-danger" href="/events">Все мероприятия</a>
+        </div>
+    {% endif %}
+        <div class = "alert alert-info">
+            {% if event|length > 0 %}
+                {% for z in events %}
+                    {% if z.Name_house == house.Name %}
+                        <h3>{{ z.Name }}</h3>
+                        <p>Тип мероприятие: {{ z.Type }}</p>
+                        <p>Дата проведения: {{ z.Data }}</p>
+                    {% else %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+</div>
+    <div class="container">
+        <div class = "alert alert-info">
+            <h4>Отзывы</h4>
+            <a class="btn btn-warning " href="/house/{{ house.id }}/add_rep">Оценить</a>
+            <a class="btn btn-danger" href="/house/{{house.id}}/rep">Комментарии</a>
+        </div>
+        {% for i in rep %}
+             {% if i.Name_house == house.Name %}
+                <h4>{{ i.Name_house }}</h4>
+                <a>Отзыв: </a>
+                <p>{{ i.Comment }}</p>
+                <h6>Оценка: {{ i.Mark }}</h6>
+                <p>Дата посещения: {{ i.When }}</p>
+             {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
