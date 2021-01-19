@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+
 from sqlalchemy import func
 
 app = Flask(__name__)
@@ -10,62 +11,63 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-class User(db.Model):
+class User(db.Model):       #пользователь
     __tablename__ = 'users'
-    id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(100))
-    username = db.Column(db.String(50), nullable=False, unique=True)
-    email = db.Column(db.String(100), nullable=False, unique=True)
-    password_hash = db.Column(db.String(100), nullable=False)
-    created_on = db.Column(db.DateTime(), default=datetime.utcnow)
-    updated_on = db.Column(db.DateTime(), default=datetime.utcnow,  onupdate=datetime.utcnow)
+    login = db.Column(db.String(50), nullable=False, unique=True)  # Логин
+    password_hash = db.Column(db.String(100), nullable=False)  # Пароль
+    name = db.Column(db.String(100)) #ФИО
+    dateb = db.Column(db.Integer(), nullable=False) #Дата рождения
+    Number_Doc = db.Column(db.Integer(), nullable=False) #Номер паспорта
+    id = db.Column(db.Integer(), primary_key=True, unique=True)  # id сотрудника
+    updated_on = db.Column(db.DateTime(), default=datetime.utcnow,  onupdate=datetime.utcnow) # id Дата входа
 
     def __repr__(self):
         return "<{}:{}>".format(self.id, self.username)
 
 
-class Owner(db.Model):
+class Owner(db.Model):       #Владелец
     id = db.Column(db.Integer, primary_key=True)
-    Nickname = db.Column(db.String(45), nullable=True)
-    Name = db.Column(db.String(45), nullable=True)
-    Type = db.Column(db.String(45), nullable=True)
-    Number = db.Column(db.Integer, nullable=True)
+    Nickname = db.Column(db.String(45), nullable=True) #Название
+    Name = db.Column(db.String(45), nullable=True) #ФИО
+    Type = db.Column(db.String(45), nullable=True) #Вид лица
+    Number = db.Column(db.Integer, nullable=True) #Контактный телефон
 
     def __repr__(self):
         return '<Owner %r>' % self.id
 
 
-class Rep(db.Model):
+class Rep(db.Model):       #Популярность
     id = db.Column(db.Integer, primary_key=True)
-    Name_house = db.Column(db.String(45), nullable=True)
-    Mark = db.Column(db.Integer, nullable=True)
-    When = db.Column(db.Integer, nullable=True)
-    Comment = db.Column(db.String(150), nullable=True)
+    Name_house = db.Column(db.String(45), nullable=True) #Название обьекта
+    Mark = db.Column(db.Integer, nullable=True) #Отзыв
+    When = db.Column(db.Integer, nullable=True) #Дата посещения
+    Comment = db.Column(db.String(150), nullable=True) #Отзыв
+    Count = db.Column(db.Integer, nullable=True) #Количество посещений
 
     def __repr__(self):
         return '<Rep %r>' % self.id
 
 
-class House(db.Model):
+class House(db.Model):       #Объект
     id = db.Column(db.Integer, primary_key=True)
-    Name = db.Column(db.String(45), nullable=True)
-    Name_owner = db.Column(db.String(45), nullable=True)
-    Type = db.Column(db.String(45), nullable=True)
-    Index = db.Column(db.String(45), nullable=True)
-    Slots = db.Column(db.Integer, nullable=True)
-    Status = db.Column(db.String(45), nullable=True)
-    Data_open = db.Column(db.Integer, nullable=True)
+    Name = db.Column(db.String(45), nullable=True) #Название объекта
+    Name_owner = db.Column(db.String(45), nullable=True) #Название владельца
+    Type = db.Column(db.String(45), nullable=True) #Тип объекта
+    Index = db.Column(db.String(45), nullable=True) #Адрес
+    Slots = db.Column(db.Integer, nullable=True) #Количестов мест
+    Status = db.Column(db.String(45), nullable=True) #Статус объекта
+    Data_open = db.Column(db.Integer, nullable=True) #Дата открытия
 
     def __repr__(self):
         return '<House %r>' % self.id
 
     
-class Event(db.Model):
+class Event(db.Model):       #Мероприятия
     id = db.Column(db.Integer, primary_key=True)
-    Name = db.Column(db.String(45), nullable=True)
-    Name_house = db.Column(db.String(45), nullable=True)
-    Type = db.Column(db.String(45), nullable=True)
-    Data = db.Column(db.Integer, nullable=True)
+    Name = db.Column(db.String(45), nullable=True) #Названи мероприятия
+    Name_house = db.Column(db.String(45), nullable=True) #Название обьекта проведения
+    Type = db.Column(db.String(45), nullable=True) #Вид мероприятия
+    Data = db.Column(db.Integer, nullable=True) #Дата паосещения
 
     def __repr__(self):
         return '<Event %r>' % self.id
@@ -244,10 +246,6 @@ def house_add_rep(id):
             return "Не удалось добавить оценку"
     else:
         return render_template('add_rep.html', house=house)
-
-
-
-
 
 
 @app.route('/posts')
